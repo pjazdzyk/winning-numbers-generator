@@ -1,0 +1,13 @@
+spring:
+  profiles:
+    active: integration
+  data:
+    mongodb:
+      uuid-representation: standard
+      uri: mongodb://admin:admin@localhost:27017/lotto-web   # mongodb://[username:password@]host1[:port1]/[database-name]
+
+lotto:
+  winning:
+    minWinNumber: 1
+    maxWinNumber: 99
+    winNumberCount: 6
