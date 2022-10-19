@@ -5,11 +5,7 @@ spring:
     mongodb:
       uuid-representation: standard
       authentication-database: admin
-      username: admin
-      password: admin
-      host: localhost
-      port: 27017
-      database: lotto-web
+      uri: mongodb://admin:admin@localhost:27017/lotto-web
 
 lotto:
   winning:
