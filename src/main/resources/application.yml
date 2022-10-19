@@ -4,10 +4,18 @@ spring:
   data:
     mongodb:
       uuid-representation: standard
-      uri: mongodb://admin:admin@localhost:27017/lotto-web   # mongodb://[username:password@]host1[:port1]/[database-name]
+      authentication-database: admin
+      username: admin
+      password: admin
+      host: localhost
+      port: 27017
+      database: lotto-web
 
 lotto:
   winning:
     minWinNumber: 1
     maxWinNumber: 99
     winNumberCount: 6
+
+server:
+  port: 8000
