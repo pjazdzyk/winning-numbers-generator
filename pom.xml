@@ -8,8 +8,8 @@
 		<version>2.7.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>pl.lotto</groupId>
-	<artifactId>winningnumbergenerator</artifactId>
+	<groupId>pl.lottery</groupId>
+	<artifactId>winning-numbers-generator</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Winning Numbers Generator</name>
 	<description>Winning number generator service.</description>
