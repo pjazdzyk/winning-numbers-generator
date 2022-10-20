@@ -17,7 +17,7 @@ class GenerateAndRetrieveIsSuccessfulTest extends BaseIntegrationSpec implements
         // given
 
         // when
-        WinningNumbersResponseDto actualWinNumbersDto = mockMvcWinningGeneratorCaller.mockedCallToGenerateWinningNumbers(DRAW_DATE);
+        WinningNumbersResponseDto actualWinNumbersDto = mockMvcWinningGeneratorCaller.mockedPostCallToGenerateWinningNumbers(DRAW_DATE);
 
         // then
         assertThat(actualWinNumbersDto.status()).isEqualTo(WinningNumberStatus.GENERATED);
@@ -29,10 +29,10 @@ class GenerateAndRetrieveIsSuccessfulTest extends BaseIntegrationSpec implements
     @DisplayName("should return ALREADY_EXISTS status if attempted to generate for already stored draw date")
     public void happyPath_shouldNotGenerateNumbersAndReturnAlreadyExistsDto_whenTheSameDrawDateIsProvided() {
         // given
-        mockMvcWinningGeneratorCaller.mockedCallToGenerateWinningNumbers(DRAW_DATE);
+        mockMvcWinningGeneratorCaller.mockedPostCallToGenerateWinningNumbers(DRAW_DATE);
 
         // when
-        WinningNumbersResponseDto actualSecondCallWinningNumbersDTO = mockMvcWinningGeneratorCaller.mockedCallToGenerateWinningNumbers(DRAW_DATE);
+        WinningNumbersResponseDto actualSecondCallWinningNumbersDTO = mockMvcWinningGeneratorCaller.mockedPostCallToGenerateWinningNumbers(DRAW_DATE);
 
         // then
         assertThat(actualSecondCallWinningNumbersDTO.status()).isEqualTo(WinningNumberStatus.ALREADY_EXISTS);
@@ -44,10 +44,10 @@ class GenerateAndRetrieveIsSuccessfulTest extends BaseIntegrationSpec implements
     @DisplayName("should return winning numbers with LOADED_FROM_DB status when requested draw date exists in database")
     public void happyPath_shouldReturnWinningNumbersWithLoadedStatus_whenRequestedDrawDateExistsInDb() {
         // given
-        mockMvcWinningGeneratorCaller.mockedCallToGenerateWinningNumbers(DRAW_DATE);
+        mockMvcWinningGeneratorCaller.mockedPostCallToGenerateWinningNumbers(DRAW_DATE);
 
         // when
-        WinningNumbersResponseDto actualSecondCallWinningNumbersDTO = mockMvcWinningGeneratorCaller.mockedCallToRetrieveWinningNumbers(DRAW_DATE);
+        WinningNumbersResponseDto actualSecondCallWinningNumbersDTO = mockMvcWinningGeneratorCaller.mockedGetCallToRetrieveNumbers(DRAW_DATE);
 
         // then
         assertThat(actualSecondCallWinningNumbersDTO.status()).isEqualTo(WinningNumberStatus.LOADED_FROM_DB);

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
 import pl.lottery.lotterygenerator.winningnumbergenerator.dto.WinningNumbersRequestDto;
+import pl.lottery.lotterygenerator.winningnumbergenerator.dto.WinningNumbersResponseDto;
 
 import java.time.LocalDateTime;
 
@@ -19,6 +20,18 @@ public class JsonConverters {
     public String convertDateTimeToWinningNumbersRequestBody(LocalDateTime drawDate) throws JsonProcessingException {
         WinningNumbersRequestDto winningNumbersRequestDto = new WinningNumbersRequestDto(drawDate);
         return objectMapper.writeValueAsString(winningNumbersRequestDto);
+    }
+
+    public WinningNumbersResponseDto convertJsonResponseToWinningNumbersDto(String responseAsJson){
+        return convertJsonResponseToObject(responseAsJson,WinningNumbersResponseDto.class);
+    }
+
+    private  <K> K convertJsonResponseToObject(String responseAsJson, Class<K> objectClass){
+        try {
+            return objectMapper.readValue(responseAsJson,objectClass);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 

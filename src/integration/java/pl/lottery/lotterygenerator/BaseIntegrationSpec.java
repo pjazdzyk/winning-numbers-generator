@@ -34,7 +34,7 @@ public class BaseIntegrationSpec {
     protected JsonConverters jsonConverters;
 
     @Container
-    private static final MongoDBContainer mongoDBContainer = new MongoDBContainer(DockerImageName.parse("mongo:4.0.10"));
+    private static final MongoDBContainer mongoDBContainer = new MongoDBContainer(DockerImageName.parse("mongo"));
 
     @DynamicPropertySource
     private static void propertyOverride(DynamicPropertyRegistry registry) {
