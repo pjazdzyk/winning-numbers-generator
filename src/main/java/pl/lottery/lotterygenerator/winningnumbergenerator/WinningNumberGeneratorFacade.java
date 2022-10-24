@@ -19,7 +19,7 @@ public class WinningNumberGeneratorFacade{
     }
 
     public WinningNumbersResponseDto generateWinningNumbers(LocalDateTime drawDate) {
-        if (checkIfActualNumbersAreAlreadyDrawnAndSaved(drawDate)) {
+        if (checkIfNumbersForThatDateExists(drawDate)) {
             return new WinningNumbersResponseDto(drawDate, null, WinningNumberStatus.ALREADY_EXISTS);
         }
         WinningNumbers winningNumbers = winningNumberGenerator.generateWinningNumbers(drawDate);
@@ -49,7 +49,7 @@ public class WinningNumberGeneratorFacade{
         return WinningNumberMapper.toDtoList(allWinningNumbers, WinningNumberStatus.LOADED_FROM_DB);
     }
 
-    private boolean checkIfActualNumbersAreAlreadyDrawnAndSaved(LocalDateTime drawDate) {
+    private boolean checkIfNumbersForThatDateExists(LocalDateTime drawDate) {
         return winningNumberRepository.existsByDrawDate(drawDate);
     }
 

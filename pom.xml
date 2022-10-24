@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>pl.lottery</groupId>
 	<artifactId>winning-numbers-generator</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.1-SNAPSHOT</version>
 	<name>Winning Numbers Generator</name>
 	<description>Winning number generator service.</description>
 	<properties>
