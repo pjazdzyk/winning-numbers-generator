@@ -11,11 +11,11 @@ It is a part of Lottery|Web project. More details can be found here: <a href="ht
 ## Specification
 
 - Spring Boot, web application,
-- modular monolith hexagonal architecture with one module extracted as microservice,
+- microservice architecture part,
 - facade design pattern,
-- noSQL databases (MongoDB) for coupon and results repositories,
-- Good coverage with unit tests, including "happy path" integration tests,
-- controllers tested via mockMvs, winning numbers service was stubbed using WireMock,
+- noSQL databases (MongoDB) for winning numbers storage,
+- good coverage with unit tests, including "happy path" integration tests,
+- controllers tested via mockMvs,
 - Docker is used for module containerization,
 - Deployed on AWS Linux EC2 server
 
