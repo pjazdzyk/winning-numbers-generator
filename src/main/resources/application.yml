@@ -1,11 +1,11 @@
 spring:
   profiles:
-    active: integration
+    active: production
   data:
     mongodb:
       uuid-representation: standard
       authentication-database: admin
-      uri: mongodb://admin:admin@localhost:27017/lotto-web
+      uri: mongodb://admin:admin@mongo_db/lotto-web
 
 lotto:
   winning:
@@ -14,4 +14,4 @@ lotto:
     winNumberCount: 6
 
 server:
-  port: 8000
+  port: 8001

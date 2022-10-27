@@ -1,7 +1,9 @@
-package pl.lottery.lotterygenerator.feat;
+package pl.lottery.lotterygenerator.features;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.test.context.DynamicPropertyRegistry;
+import org.springframework.test.context.DynamicPropertySource;
 import pl.lottery.lotterygenerator.BaseIntegrationSpec;
 import pl.lottery.lotterygenerator.TestConstants;
 import pl.lottery.lotterygenerator.winningnumbergenerator.dto.WinningNumberStatus;
@@ -10,6 +12,12 @@ import pl.lottery.lotterygenerator.winningnumbergenerator.dto.WinningNumbersResp
 import static org.assertj.core.api.Assertions.assertThat;
 
 class GenerateAndRetrieveIsSuccessfulTest extends BaseIntegrationSpec implements TestConstants {
+
+    @DynamicPropertySource
+    private static void propertyOverride(DynamicPropertyRegistry registry) {
+        registry.add("spring.data.mongodb.uri", mongoDBContainer::getReplicaSetUrl);
+    }
+
 
     @Test
     @DisplayName("should return new generated numbers when draw date is provided")

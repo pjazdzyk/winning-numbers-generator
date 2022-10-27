@@ -1,4 +1,4 @@
-package pl.lottery.lotterygenerator.infrastructure.winningnumbergenerator;
+package pl.lottery.lotterygenerator.infrastructure.propertyconfigs;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;

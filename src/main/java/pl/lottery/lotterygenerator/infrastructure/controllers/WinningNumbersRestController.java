@@ -1,4 +1,4 @@
-package pl.lottery.lotterygenerator.infrastructure.winningnumbergenerator.controllers;
+package pl.lottery.lotterygenerator.infrastructure.controllers;
 
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;

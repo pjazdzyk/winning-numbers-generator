@@ -1,0 +1,1 @@
+docker push pjazdzyk/winning-numbers:latest
