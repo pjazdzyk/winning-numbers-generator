@@ -38,7 +38,7 @@ public class WinningNumbersRestController {
         return ResponseEntity.ok(allNumbersFromDbDto);
     }
 
-    @DeleteMapping(value = "/api/v1/delete")
+    @DeleteMapping(value = "/api/v1/winning-numbers")
     public ResponseEntity<WinningNumbersResponseDto> deleteWinningNumbersForDrawDate(@RequestParam("drawDate") String drawDateAsString){
         LocalDateTime drawDate = LocalDateTime.parse(drawDateAsString);
         WinningNumbersResponseDto deletedNumbersDto = winningNumberGeneratorFacade.deleteWinningNumbersForDate(drawDate);
