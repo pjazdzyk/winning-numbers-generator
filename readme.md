@@ -38,6 +38,17 @@ Testing:<br>
 Deployed on:<br>
 ![image](https://img.shields.io/badge/Amazon_AWS-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white) &nbsp;
 
+## Rest-API Endpoints
+
+This microservice provides following endpoints:
+
+|             ENDPOINT              | METHOD |         REQUEST          | RESPONSE |                FUNCTION                 |
+|:---------------------------------:|:------:|:------------------------:|:--------:|:---------------------------------------:|
+|      api/v1/winning-numbers       |  POST  |   JSON BODY (drawDate)   |   JSON   |  generates 6 distinct winning numbers   |
+| api/v1/winning-numbers/{drawDate} |  GET   | PATH VARIABLE (drawDate) |   JSON   | retrieves winning numbers for draw date |
+|      api/v1/winning-numbers       |  GET   |            -             |   JSON   |      retrieves all winning numbers      |
+|      api/v1/winning-numbers       | DELETE |   JSON BODY (drawDate)   |   JSON   |  deletes winning numbers for draw date  |
+
 ## License
 
 GNU GENERAL PUBLIC LICENSE V3
