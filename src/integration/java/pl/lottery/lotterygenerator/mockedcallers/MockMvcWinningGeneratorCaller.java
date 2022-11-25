@@ -9,9 +9,7 @@ import java.time.LocalDateTime;
 @Service
 public class MockMvcWinningGeneratorCaller {
 
-    public static final String API_URL_GENERATE = "/api/v1/generate";
-    public static final String API_URL_RETRIEVE = "/api/v1/numbers";
-    public static final String DATE_PARAM_NAME = "drawDate";
+    public static final String API_URL = "/api/v1/winning-numbers";
     private final MockMcvCaller mockMcvCaller;
     private final JsonConverters jsonConverters;
 
@@ -23,7 +21,7 @@ public class MockMvcWinningGeneratorCaller {
     public WinningNumbersResponseDto mockedPostCallToGenerateWinningNumbers(LocalDateTime drawDate) {
         try {
             String requestBodyAsJson = jsonConverters.convertDateTimeToWinningNumbersRequestBody(drawDate);
-            MvcResult mvcCallResult = mockMcvCaller.makePostMockedCallWithJson(API_URL_GENERATE, requestBodyAsJson);
+            MvcResult mvcCallResult = mockMcvCaller.makePostMockedCallWithJson(API_URL, requestBodyAsJson);
             String responseAsJson = mvcCallResult.getResponse().getContentAsString();
             return jsonConverters.convertJsonResponseToWinningNumbersDto(responseAsJson);
         } catch (Exception e) {
@@ -34,7 +32,7 @@ public class MockMvcWinningGeneratorCaller {
     public WinningNumbersResponseDto mockedGetCallToRetrieveNumbers(LocalDateTime drawDate) {
         try {
             String drawDateAsString = drawDate.toString();
-            MvcResult mvcCallResult = mockMcvCaller.makeGetMockedCallWithParam(API_URL_RETRIEVE, DATE_PARAM_NAME, drawDateAsString);
+            MvcResult mvcCallResult = mockMcvCaller.makeGetMockedCallWithPathVariable(API_URL, drawDateAsString);
             String responseAsJson = mvcCallResult.getResponse().getContentAsString();
             return jsonConverters.convertJsonResponseToWinningNumbersDto(responseAsJson);
         } catch (Exception e) {

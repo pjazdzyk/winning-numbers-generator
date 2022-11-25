@@ -1,6 +1,5 @@
 package pl.lottery.lotterygenerator.infrastructure.controllers;
 
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.lottery.lotterygenerator.winningnumbergenerator.WinningNumberGeneratorFacade;
@@ -19,22 +18,21 @@ public class WinningNumbersRestController {
         this.winningNumberGeneratorFacade = winningNumberGeneratorFacade;
     }
 
-    @PostMapping(value="/api/v1/generate")
+    @PostMapping(value="/api/v1/winning-numbers")
     public ResponseEntity<WinningNumbersResponseDto> generateWinningNumbersForDrawDate(@RequestBody WinningNumbersRequestDto winningNumbersRequestDto){
         LocalDateTime requestDrawDate = winningNumbersRequestDto.getDrawDate();
         WinningNumbersResponseDto generatedNumbersDto = winningNumberGeneratorFacade.generateWinningNumbers(requestDrawDate);
         return ResponseEntity.ok(generatedNumbersDto);
     }
 
-    @Cacheable("number-retrieval")
-    @GetMapping(value = "/api/v1/numbers")
-    public ResponseEntity<WinningNumbersResponseDto> getWinningNumbersForDrawDate(@RequestParam("drawDate") String drawDateAsString){
-        LocalDateTime drawDate = LocalDateTime.parse(drawDateAsString);
+    @GetMapping(value = "/api/v1/winning-numbers/{drawDateString}")
+    public ResponseEntity<WinningNumbersResponseDto> getWinningNumbersForDrawDate(@PathVariable String drawDateString){
+        LocalDateTime drawDate = LocalDateTime.parse(drawDateString);
         WinningNumbersResponseDto loadedFromDbNumbersDto = winningNumberGeneratorFacade.retrieveWinningNumbersForDrawDate(drawDate);
         return ResponseEntity.ok(loadedFromDbNumbersDto);
     }
 
-    @GetMapping(value = "/api/v1/all")
+    @GetMapping(value = "/api/v1/winning-numbers")
     public ResponseEntity<List<WinningNumbersResponseDto>> getAllWiningNumbers(){
         List<WinningNumbersResponseDto> allNumbersFromDbDto = winningNumberGeneratorFacade.getAllWinningNumbers();
         return ResponseEntity.ok(allNumbersFromDbDto);

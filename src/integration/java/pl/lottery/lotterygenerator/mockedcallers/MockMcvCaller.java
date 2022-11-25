@@ -25,9 +25,8 @@ public class MockMcvCaller {
                 .andExpect(status().isOk())
                 .andReturn();
     }
-    MvcResult makeGetMockedCallWithParam(String controllerUrl, String paramName, String paramValue) throws Exception {
-        return mockMvc.perform(get(controllerUrl)
-                        .param(paramName, paramValue))
+    MvcResult makeGetMockedCallWithPathVariable(String controllerUrl, String pathVariable) throws Exception {
+        return mockMvc.perform(get(controllerUrl + "/{pathVariable}", pathVariable))
                 .andExpect(status().isOk())
                 .andReturn();
     }
