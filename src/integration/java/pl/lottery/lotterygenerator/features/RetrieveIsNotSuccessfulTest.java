@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class RetrieveIsNotSuccessfulTest extends BaseIntegrationSpec implements TestConstants {
+class RetrieveIsNotSuccessfulTest extends BaseIntegrationSpec implements TestConstants {
 
     @DynamicPropertySource
     private static void propertyOverride(DynamicPropertyRegistry registry) {
