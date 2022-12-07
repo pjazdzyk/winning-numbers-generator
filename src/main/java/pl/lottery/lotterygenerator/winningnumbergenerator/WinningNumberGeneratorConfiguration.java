@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 @Configuration
-public class WinningNumberGeneratorConfiguration {
+class WinningNumberGeneratorConfiguration {
 
     public WinningNumberGeneratorFacade createForTests(RandomNumbersGenerator randomNumbersGenerator, WinningNumberRepository winningNumberRepository) {
 
@@ -18,7 +18,7 @@ public class WinningNumberGeneratorConfiguration {
     public WinningNumberGeneratorFacade createForProduction(RandomNumbersGenerator randomNumbersGenerator, WinningNumberRepository winningNumberRepository) {
         WinningUuidGenerator uuidGenerator = new WinningUuidGenerator();
         WinningNumberGenerator winningNumberGenerator = new WinningNumberGenerator(randomNumbersGenerator, uuidGenerator);
-        return new WinningNumberGeneratorFacade(winningNumberGenerator, winningNumberRepository);
+        return new WinningNumberGeneratorFacadeImpl(winningNumberGenerator, winningNumberRepository);
     }
 
     @Bean
