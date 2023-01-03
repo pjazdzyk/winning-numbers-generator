@@ -8,6 +8,8 @@ It is a part of Lottery|Web project. More details can be found here: <a href="ht
 > AUTHOR: PIOTR JAŻDŻYK <br>
 > LINKEDIN: https://www.linkedin.com/in/pjazdzyk <br>
 
+## THIS IS NO LONGER USED. WINING NUMBERS SERVICE IS INTEGRATED WITH LOTTERY-WEB USING MAVEN MODULES. 
+
 ## Specification
 
 - Spring Boot, web application,
